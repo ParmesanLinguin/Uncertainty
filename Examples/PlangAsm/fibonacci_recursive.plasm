@@ -1,0 +1,43 @@
+﻿.const iterations 10 4
+start:
+  push 0;
+loop:
+  call :fib
+  debug
+  push 1
+  add
+  dup
+  brgteq %iterations, :end
+  jmp :loop
+end:
+  halt
+fib:
+  allocloc 8
+  loadarg4 0
+  dup
+  brgteq 2,:fibbody
+  ret4
+fibbody:
+  dup
+  storloc4 0
+  storloc4 1
+  loadloc4 0
+  push 1
+  sub
+  storloc4 0
+  loadloc4 1
+  push 2
+  sub
+  storloc4 1
+  loadloc4 0
+  call :fib
+  storloc4 0
+  pop
+  loadloc4 1
+  call :fib
+  storloc4 1
+  pop
+  loadloc4 1
+  loadloc4 0
+  add
+  ret4

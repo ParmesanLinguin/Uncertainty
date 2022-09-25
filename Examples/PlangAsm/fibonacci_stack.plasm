@@ -1,0 +1,21 @@
+﻿  push 0
+  push 1
+  push 18
+prog:
+  rrotate
+  dup
+  lrotate
+  dup
+  lrotate
+  add
+  dup
+  pop
+  rrotate
+  stor4 0x00
+  swap
+  lrotate
+  push 1
+  sub
+  dup
+  brneq 0, :prog
+  halt;

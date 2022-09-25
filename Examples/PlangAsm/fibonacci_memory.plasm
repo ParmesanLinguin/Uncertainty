@@ -1,0 +1,30 @@
+﻿first:   .data 0x00000001
+second:  .data 0x00000001
+counter: .data 0x00000018
+
+start:
+  // Add numbers
+  load4 :first
+  load4 :second
+  add
+
+  // Print
+  dup
+  pop
+  
+  // Store in appropriate spots
+  load4 :first
+  stor4 :second
+
+  stor4 :first
+
+  // Update counter
+  load4 :counter
+  push 1
+  sub
+
+  dup
+  stor4 :counter
+
+  brneq 0 :start
+  halt

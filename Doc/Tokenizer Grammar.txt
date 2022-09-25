@@ -1,0 +1,39 @@
+﻿NOTE: These grammars are not written out in any specific format, although they're mostly inspired by ANTLR grammars.
+They are purely for my documentation purposes and are subject to change, and have no requirement to adhere to actual ANTLR grammar.
+
+// Symbols
+LPAREN:     "("
+RPAREN:     ")"
+COLON:      ":"
+QUOTE:      "\""
+PERCENT:    "%"
+COMMA:      ","
+DOLLAR:     "$"
+UNDERSCORE: "_"
+
+PLUS:       "+"
+MINUS:      "-"
+GT:         ">"
+LT:         "<"
+ASTERISK:   "*"
+SLASH:      "/"
+TYPEARROW:  "->"
+
+
+// Keywords
+KW_IF         "if"
+KW_ELSE:      "else"
+KW_BREAK:     "break"
+KW_CONTINUE:  "continue"
+KW_DEF:       "def"
+KW_LET:       "let"
+KW_VAR:       "var"
+KW_IF:        "if"
+KW_ELSE:      "else"
+KW_WHILE:     "while"
+
+// Other
+LIT_NUMBER:   [0-9] (UNDERSCORE? [0-9])*
+LIT_STRING:   QUOTE ~("\n" | "\r" | "\"")* QUOTE
+
+IDENTIFIER: letter (letter | number | _)*

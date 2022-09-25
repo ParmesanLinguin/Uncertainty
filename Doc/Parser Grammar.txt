@@ -1,0 +1,92 @@
+﻿NOTE: These grammars are not written out in any specific format, although they're mostly inspired by ANTLR grammars.
+They are purely for my documentation purposes and are subject to change, and have no requirement to adhere to actual ANTLR grammar.
+
+program:
+  top-level-statement* EOF
+
+top-level-statement:
+  | function-decl
+  | type-decl
+  | trait-decl
+  ;
+
+function-decl:
+  DEF IDENTIFIER:name type-param-list? param-list type block-expression;
+
+block-expression:
+  INDENT (statement)* expression OUTDENT;
+
+statement:
+  | expression NEWLINE
+  ;
+
+expression:
+  | if-expression
+  | while-expression
+  | path-expression
+  | var-decl
+  | var-assign
+  | function-call
+  | term
+  ;
+
+path-expression:
+  DOUBLECOLON? (path-segment)+ expression
+
+path-segment:
+  IDENTIFIER DOUBLECOLON
+
+if-expression: 
+  KW_IF expression COLON block-expression (KW_ELSE (if-expression|COLON block-expression))?
+
+while-expression:
+  KW_WHILE expression COLON block-expression
+  
+var-decl:
+  (KW_LET|KW_VAR) IDENTIFIER (COLON type) EQUALS expression
+
+type:
+  type-path? IDENTIFIER type-param-list?
+  
+type-path:
+  DOUBLECOLON? (path-segment)+
+
+var-assign:
+  IDENTIFIER EQUALS expression
+
+term:
+  | item ((binary_op) expression)*
+  ;
+
+tuple: LPAREN expr (COMMA expr)* RPAREN;
+
+item:
+  | (unary_op)* atom
+
+fragment binary_op:
+  | PLUS
+  | MINUS
+  | ASTERISK
+  | SLASH
+  | PERIOD
+  ;
+
+atom:
+  | INT_LITERAL
+  | UNIT_LITERAL
+  | IDENTIFIER
+  | LPAREN expression RPAREN
+  | tuple
+  ;
+
+param-list:
+  LPAREN (IDENTIFIER type (COMMA IDENTIFIER type)*)? RPAREN;
+
+type-param-list:
+  LBRACE (type (COMMA type)*) RBRACE;
+
+function-call:
+  IDENT arglist
+
+arglist:
+  LPAREN (expression (COMMA expression)*)? RPAREN;

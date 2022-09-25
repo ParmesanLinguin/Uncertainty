@@ -1,0 +1,31 @@
+﻿use __magic
+
+module Sys
+
+public value type int32:
+  value: __magic.int
+
+public for int32:
+  const MAX_VALUE: __magic.int = 2_147_483_647
+  const MIN_VALUE: __magic.int = -2_147_483_648
+
+public Add<int32, int32> for int32:
+  def add(this, value int32) int32:
+    __magic.add_int(this.value, value.value)
+
+public Sub<int32, int32> for int32:
+  def sub(this, value int32) int32:
+    __magic.sub_int(this.value, value.value)
+
+public Mult<int32, int32> for int32:
+  def mult(this, value int32) int32:
+    __magic.mult_int(this.value, value.value)
+
+public Div<int32, int32> for int32:
+  def div(this, value int32) int32:
+    __magic.div_int(this.value, value.value)
+
+/*
+  potential future syntax:
+  def Add<int32, int32>.add(self, value int32) -> int32
+*/

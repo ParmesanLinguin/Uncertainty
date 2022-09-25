@@ -1,0 +1,4 @@
+﻿def main(a ::builtin::int, b ::builtin::int) int:
+  let x: int = ()
+  let y: builtin::int = 4
+  3.add(4)

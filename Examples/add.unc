@@ -1,0 +1,11 @@
+﻿trait Add<T, R>:
+  def add(value T) -> R
+
+trait Sub<T, R>:
+  def sub(value T) -> R
+
+trait Mult<T, R>:
+  def mult(value T) -> R
+
+trait Div<T, R>:
+  def div(value T) -> R

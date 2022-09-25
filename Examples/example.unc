@@ -1,0 +1,29 @@
+﻿// Certainly:
+certainly:
+  print("Hello, world!")
+
+// Perhaps chaining:
+perhaps 50%:
+  print("It's gorgeous today!")
+perhaps 50%:
+  print("It's not gorgeous today :(")
+
+// Never:
+never:
+  print("Bye, world!")
+
+// Loops + control flow:
+loop:
+  // Conditionals:
+  perhaps 100% when 50% else 0%:
+	print("You win!")
+	break
+  perhaps 100%:
+    print("You lose!")
+	continue
+
+// Functions:
+fn example(a int, b int) void:
+  // String interpolation
+  print($"The result is: {a + b}")
+  // print("The result is:" + ((a + b) to str))

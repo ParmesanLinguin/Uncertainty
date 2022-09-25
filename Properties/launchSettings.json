@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Uncertainty": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Cailan\\Desktop\\UncertaintyLang\\Uncertainty\\Examples\\test.unc\r\n"
+    }
+  }
+}
